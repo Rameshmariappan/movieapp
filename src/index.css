@@ -1,13 +1,74 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+* {
+  box-sizing: border-box;
 }
+body {
+  background-color: #1f80e0;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+.root {
+  display: flex;
+  flex-direction: column;
+}
+header {
+  background-color: #1668b9;
+  display: flex;
+  padding: 1rem;
+  justify-content: flex-end;
+}
+.search {
+  background-color: transparent;
+  border: 2px solid #2f80d1;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  font-size: 1rem;
+}
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 100px;
+}
+.movie {
+  background-color: #3e87d1;
+  width: 350px;
+  display: grid;
+  margin: 20px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  box-shadow: 3px;
+}
+.movie img {
+  max-width: 100%;
+}
+.movie-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+}
+.movie h3 {
+  margin: 0rem;
+}
+.movie-overview {
+  position: absolute;
+  background-color: aliceblue;
+  color: #1f80e0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: px;
+  overflow: auto;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  transform: translateY(100%);
+  transition: 0.5s ease-in-out;
+  border-radius: 20px;
+}
+.movie:hover .movie-overview {
+  transform: translateY(0%);
 }

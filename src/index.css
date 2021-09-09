@@ -62,7 +62,7 @@ header {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: px;
+  padding: 10px;
   overflow: auto;
 
   transform: translateY(100%);

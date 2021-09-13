@@ -19,14 +19,53 @@ header {
   padding: 1rem;
   justify-content: flex-end;
 }
-.search {
-  background-color: transparent;
-  border: 2px solid #2f80d1;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  border-radius: 10px;
+.mov {
+  display: block;
+  padding-right: 72%;
+  padding-bottom: 10px;
   color: white;
+  font-family: Azeret Mono;
+  padding-bottom: 0;
+}
+.searchbox {
+  padding-top: 10px;
+}
+.search {
+  background-color: white;
+  border: 1px solid #2f80d1;
+  font-family: Azeret Mono;
+  border-radius: 40px;
+  color: #1668b9;
   padding: 10px;
   font-size: 1rem;
+}
+.search:focus {
+  outline: 0;
+}
+.mybutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px;
+  padding: 10px;
+}
+.mybutton .popular {
+  padding: 20px 50px 20px 50px;
+  margin-right: 50px;
+  border-radius: 10px;
+  background-color: #1f80e0;
+}
+.mybutton .upcoming {
+  padding: 20px 80px 20px 80px;
+  margin-right: 50px;
+  border-radius: 10px;
+  background-color: #1f80e0;
+}
+.mybutton .nowplaying {
+  padding: 20px 50px 20px 50px;
+  margin-right: 50px;
+  border-radius: 10px;
+  background-color: #1f80e0;
 }
 .movie-container {
   display: flex;
@@ -35,7 +74,7 @@ header {
 }
 .movie {
   background-color: #3e87d1;
-  width: 350px;
+  width: 250px;
   display: grid;
   margin: 20px;
   overflow: hidden;
@@ -64,11 +103,25 @@ header {
   right: 0;
   padding: 10px;
   overflow: auto;
-
+  max-height: 100%;
   transform: translateY(100%);
   transition: 0.5s ease-in-out;
   border-radius: 20px;
 }
 .movie:hover .movie-overview {
   transform: translateY(0%);
+}
+.tag {
+  background-color: #092e57;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+.tag.red {
+  color: red;
+}
+.tag.green {
+  color: green;
+}
+.tag.yellow {
+  color: yellow;
 }

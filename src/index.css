@@ -24,16 +24,17 @@ header {
   padding-right: 72%;
   padding-bottom: 10px;
   color: white;
-  font-family: Azeret Mono;
+  font-family: Courier, monospace;
   padding-bottom: 0;
+  font-size: 2rem;
 }
 .searchbox {
-  padding-top: 10px;
+  padding-top: 25px;
 }
 .search {
   background-color: white;
   border: 1px solid #2f80d1;
-  font-family: Azeret Mono;
+  font-family: Courier, monospace;
   border-radius: 40px;
   color: #1668b9;
   padding: 10px;
@@ -49,23 +50,56 @@ header {
   border: 3px;
   padding: 10px;
 }
+
 .mybutton .popular {
-  padding: 20px 50px 20px 50px;
+  padding: 20px 80px 20px 80px;
   margin-right: 50px;
   border-radius: 10px;
+  color: rgb(24, 23, 21);
   background-color: #1f80e0;
+  font-family: bold Courier, monospace;
+  opacity: 0.6;
+  transition: 0.3s;
+  font-size: 20px;
 }
+.mybutton .popular:hover {
+  opacity: 1;
+  color: white;
+  background-color: #092e57;
+}
+
 .mybutton .upcoming {
   padding: 20px 80px 20px 80px;
   margin-right: 50px;
   border-radius: 10px;
   background-color: #1f80e0;
+  font-family: Courier, monospace;
+  color: seashell;
+  opacity: 0.6;
+  transition: 0.3s;
+  font-size: 20px;
+  color: rgb(24, 23, 21);
+}
+.mybutton .upcoming:hover {
+  opacity: 1;
+  color: white;
+  background-color: #092e57;
 }
 .mybutton .nowplaying {
-  padding: 20px 50px 20px 50px;
+  padding: 20px 80px 20px 80px;
   margin-right: 50px;
   border-radius: 10px;
+  color: #070d13;
   background-color: #1f80e0;
+  font-family: Courier, monospace;
+  opacity: 0.6;
+  transition: 0.3s;
+  font-size: 20px;
+}
+.mybutton .nowplaying:hover {
+  opacity: 1;
+  color: white;
+  background-color: #092e57;
 }
 .movie-container {
   display: flex;
@@ -124,4 +158,35 @@ header {
 }
 .tag.yellow {
   color: yellow;
+}
+.paginationBttns {
+  width: 80%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+.paginationBttns a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 2px solid #092e57;
+  color: #070d13;
+  cursor: pointer;
+}
+.paginationBttns a:hover {
+  color: white;
+  background-color: #092e57;
+}
+.paginationActive a {
+  color: white;
+  background-color: #092e57;
+}
+.paginationDisabled a {
+  color: rgb(198, 197, 202);
+  border: 1px solid rgb(198, 197, 202);
+}
+.paginationDisabled a:hover {
+  background-color: unset !important;
+  color: unset !important;
 }

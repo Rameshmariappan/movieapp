@@ -9,6 +9,7 @@ body {
   margin: 0px;
   padding: 0px;
 }
+
 .root {
   display: flex;
   flex-direction: column;
@@ -165,6 +166,7 @@ header {
   list-style: none;
   display: flex;
   justify-content: center;
+  padding-left: 25%;
 }
 .paginationBttns a {
   padding: 10px;

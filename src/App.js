@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import Movie from "./component/Movie";
+import "./media.css";
 const API_KEY = `${process.env.REACT_APP_API_KEY}`;
 const BASE_URL = `${process.env.REACT_APP_BASE}`;
 const FEATURE_API = `${BASE_URL}discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&page=`;
@@ -10,16 +11,23 @@ const NOWPLAYING_API = `${BASE_URL}movie/now_playing?api_key=${API_KEY}&language
 function App() {
   const [movies, setMovies] = useState([]);
   const [searchmovie, setSearchmovie] = useState("");
-  const [pageNumber, setPageNumber] = useState(1);
+  const [totalpageNumber, setTotalpageNumber] = useState();
   const [catagory, setCatagory] = useState("popularity");
+  const [initial, setInitial] = useState(1);
+  const [pagenum, setPagenum] = useState();
+  const movieperpage = 20;
   useEffect(() => {
-    checkmovie(FEATURE_API);
+    checkmovie();
   }, []);
   const checkmovie = (API) => {
     fetch(API)
       .then((res) => res.json())
       .then((data) => {
+        // setInitial(data.page);
+        console.log(data.page);
+        setPagenum(data.page - 1);
         setMovies(data.results);
+        setTotalpageNumber(data.total_results);
       });
   };
   const search_handle = (e) => {
@@ -27,7 +35,6 @@ function App() {
     if (searchmovie) {
       checkmovie(SEARCH_API + searchmovie);
       setCatagory("search");
-      setSearchmovie("");
     }
   };
   const searchonchange = (e) => {
@@ -35,30 +42,34 @@ function App() {
   };
 
   const upcome = () => {
+    setInitial(0);
     setCatagory("upcoming");
-    checkmovie(UPCOMING_API);
+    checkmovie(UPCOMING_API + 1);
   };
   const popularity = () => {
+    setInitial(0);
     setCatagory("popularity");
-    checkmovie(FEATURE_API);
+    checkmovie(FEATURE_API + 1);
   };
   const nowplayed = () => {
+    setPagenum();
     setCatagory("nowPlaying");
-    checkmovie(NOWPLAYING_API);
+    checkmovie(NOWPLAYING_API + 1);
   };
 
-  // const pageCount = Math.ceil(movies.length / movieperpage);
+  const pageCounts = Math.ceil(totalpageNumber / movieperpage);
   const pagechange = ({ selected }) => {
-    let finalNo = selected + 1;
-    setPageNumber(finalNo);
+    let select = selected + 1;
+    console.log(selected);
+    // setPagenum(0);
     if (catagory === "popularity") {
-      checkmovie(FEATURE_API + finalNo);
+      checkmovie(FEATURE_API + select);
     } else if (catagory === "upcoming") {
-      checkmovie(UPCOMING_API + finalNo);
+      checkmovie(UPCOMING_API + select);
     } else if (catagory === "nowPlaying") {
-      checkmovie(NOWPLAYING_API + finalNo);
+      checkmovie(NOWPLAYING_API + select);
     } else if (catagory === "search") {
-      checkmovie(SEARCH_API + searchmovie + `&page=${finalNo}`);
+      checkmovie(SEARCH_API + searchmovie + `&page=` + select);
     } else {
       console.log("error");
     }
@@ -98,11 +109,17 @@ function App() {
           previousLabel={"Previous"}
           nextLabel={"Next"}
           onPageChange={pagechange}
+          // pagenum={pagenum}
+
+          // initialPage={initial}
+          pageCount={pageCounts}
+          disableInitialCallback={false}
           containerClassName={"paginationBttns"}
           previousLinkClassName={"previousBttn"}
           nextLinkClassName={"nextBttn"}
           disabledClassName={"paginationDisabled"}
           activeClassName={"paginationActive"}
+          forcePage={pagenum}
         />
       </div>
     </>

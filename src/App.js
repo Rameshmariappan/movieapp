@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import Movie from "./component/Movie";
-import "./media.css";
 const API_KEY = `${process.env.REACT_APP_API_KEY}`;
 const BASE_URL = `${process.env.REACT_APP_BASE}`;
 const FEATURE_API = `${BASE_URL}discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&page=`;
@@ -17,7 +16,7 @@ function App() {
   const [pagenum, setPagenum] = useState();
   const movieperpage = 20;
   useEffect(() => {
-    checkmovie();
+    checkmovie(FEATURE_API);
   }, []);
   const checkmovie = (API) => {
     fetch(API)
@@ -45,16 +44,19 @@ function App() {
     setInitial(0);
     setCatagory("upcoming");
     checkmovie(UPCOMING_API + 1);
+    setSearchmovie("");
   };
   const popularity = () => {
     setInitial(0);
     setCatagory("popularity");
     checkmovie(FEATURE_API + 1);
+    setSearchmovie("");
   };
   const nowplayed = () => {
     setPagenum();
     setCatagory("nowPlaying");
     checkmovie(NOWPLAYING_API + 1);
+    setSearchmovie("");
   };
 
   const pageCounts = Math.ceil(totalpageNumber / movieperpage);
@@ -104,7 +106,7 @@ function App() {
         {movies.length > 0 &&
           movies.map((movie) => <Movie key={movie.id} {...movie} />)}
       </div>
-      <div>
+      <div className="paginate-control">
         <ReactPaginate
           previousLabel={"Previous"}
           nextLabel={"Next"}

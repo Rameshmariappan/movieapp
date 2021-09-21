@@ -1,6 +1,5 @@
 import React from "react";
-
-const IMAGE_API = "https://image.tmdb.org/t/p/w500";
+const IMAGE_API = `${process.env.REACT_APP_IMAGE_BASE}`;
 const colorofvotes = (vote) => {
   if (vote > 8) {
     return "red";

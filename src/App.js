@@ -1,104 +1,70 @@
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import Movie from "./component/Movie";
-const API_KEY = `${process.env.REACT_APP_API_KEY}`;
-const BASE_URL = `${process.env.REACT_APP_BASE}`;
-const FEATURE_API = `${BASE_URL}discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&page=`;
-const SEARCH_API = `${BASE_URL}search/movie?api_key=${API_KEY}&query=`;
-const UPCOMING_API = `${BASE_URL}movie/upcoming?api_key=${API_KEY}&language=en-US&page=`;
-const NOWPLAYING_API = `${BASE_URL}movie/now_playing?api_key=${API_KEY}&language=en-US&page=`;
+import { checkMovie } from "./component/fetchFunction";
+import { FEATURE_API, SEARCH_API, UPCOMING_API, NOWPLAYING_API } from "./Api";
 function App() {
   const [movies, setMovies] = useState([]);
   const [searchmovie, setSearchmovie] = useState("");
   const [totalpageNumber, setTotalpageNumber] = useState();
-  const [catagory, setCatagory] = useState("popularity");
-  const [initial, setInitial] = useState(1);
   const [pagenum, setPagenum] = useState();
+  const [api, setApi] = useState(FEATURE_API);
+  const [currentPage, setCurrentPage] = useState(1);
   const movieperpage = 20;
   useEffect(() => {
-    checkmovie(FEATURE_API);
-  }, []);
-  const checkmovie = (API) => {
-    fetch(API)
-      .then((res) => res.json())
-      .then((data) => {
-        // setInitial(data.page);
-        console.log(data.page);
-        setPagenum(data.page - 1);
-        setMovies(data.results);
-        setTotalpageNumber(data.total_results);
-      });
-  };
-  const search_handle = (e) => {
+    checkMovie(api, currentPage).then((data) => {
+      setPagenum(data.page - 1);
+      setMovies(data.results);
+      setTotalpageNumber(data.total_results);
+    });
+  }, [api, currentPage]);
+  const searchHandle = (e) => {
     e.preventDefault();
     if (searchmovie) {
-      checkmovie(SEARCH_API + searchmovie);
-      setCatagory("search");
+      setApi(SEARCH_API + searchmovie + `&page=`);
     }
   };
-  const searchonchange = (e) => {
-    setSearchmovie(e.target.value);
-  };
-
-  const upcome = () => {
-    setInitial(0);
-    setCatagory("upcoming");
-    checkmovie(UPCOMING_API + 1);
-    setSearchmovie("");
-  };
-  const popularity = () => {
-    setInitial(0);
-    setCatagory("popularity");
-    checkmovie(FEATURE_API + 1);
-    setSearchmovie("");
-  };
-  const nowplayed = () => {
-    setPagenum();
-    setCatagory("nowPlaying");
-    checkmovie(NOWPLAYING_API + 1);
-    setSearchmovie("");
-  };
-
   const pageCounts = Math.ceil(totalpageNumber / movieperpage);
-  const pagechange = ({ selected }) => {
-    let select = selected + 1;
-    console.log(selected);
-    // setPagenum(0);
-    if (catagory === "popularity") {
-      checkmovie(FEATURE_API + select);
-    } else if (catagory === "upcoming") {
-      checkmovie(UPCOMING_API + select);
-    } else if (catagory === "nowPlaying") {
-      checkmovie(NOWPLAYING_API + select);
-    } else if (catagory === "search") {
-      checkmovie(SEARCH_API + searchmovie + `&page=` + select);
-    } else {
-      console.log("error");
-    }
-  };
-
   return (
     <>
       <header className="headers">
         <h2 className="mov">MovFlix</h2>
-        <form className="searchbox" onSubmit={search_handle}>
+        <form className="searchbox" onSubmit={searchHandle}>
           <input
             className="search"
             type="search"
             placeholder="Search!!!!!!"
-            onChange={searchonchange}
+            onChange={(e) => setSearchmovie(e.target.value)}
             value={searchmovie}
           />
         </form>
       </header>
       <div className="mybutton">
-        <button className="popular" onClick={popularity}>
+        <button
+          className="popular"
+          onClick={() => {
+            setApi(FEATURE_API);
+            setCurrentPage(1);
+          }}
+        >
           Popular
         </button>
-        <button className="upcoming" onClick={upcome}>
+        <button
+          className="upcoming"
+          onClick={() => {
+            setApi(UPCOMING_API);
+            setCurrentPage(1);
+          }}
+        >
           Upcoming
         </button>
-        <button className="nowplaying" onClick={nowplayed}>
+        <button
+          className="nowplaying"
+          onClick={() => {
+            setApi(NOWPLAYING_API);
+            setCurrentPage(1);
+          }}
+        >
           Now Playing
         </button>
       </div>
@@ -110,10 +76,7 @@ function App() {
         <ReactPaginate
           previousLabel={"Previous"}
           nextLabel={"Next"}
-          onPageChange={pagechange}
-          // pagenum={pagenum}
-
-          // initialPage={initial}
+          onPageChange={(e) => setCurrentPage(e.selected + 1)}
           pageCount={pageCounts}
           disableInitialCallback={false}
           containerClassName={"paginationBttns"}

@@ -1,0 +1,108 @@
+[33mcommit 46d25b1e8aedb22895e23c0620a6bb06ec49e839[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Tue Sep 21 16:47:39 2021 +0530
+
+    version1
+
+[33mcommit 80f857e4e45f40c92dfe04052c6fded1f170f19c[m[33m ([m[1;31morigin/lazy[m[33m, [m[1;32mlazy[m[33m)[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Mon Sep 20 14:27:20 2021 +0530
+
+    responsive
+
+[33mcommit 4f72cbc27c8f8b8ccb2197b9503b2718e56b4744[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Fri Sep 17 16:23:24 2021 +0530
+
+    paginated
+
+[33mcommit 023337ebce2ece01a8a25b971066baa931a629c3[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Wed Sep 15 11:26:09 2021 +0530
+
+    paginationadd
+
+[33mcommit dd984561fb0072cd2096648d36e5c0fb691e870a[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Mon Sep 13 13:23:56 2021 +0530
+
+    task
+
+[33mcommit dce8db2a4240a9da415da82a29b9f1dbb1a9406a[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Thu Sep 9 17:45:02 2021 +0530
+
+    newcommit
+
+[33mcommit 36dbb4cbf6011404d04c8bf87282bcaf0dcea77a[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Thu Sep 9 17:27:20 2021 +0530
+
+    new
+
+[33mcommit b1978497a2d32451e155b8ef704e7ca6a1f0e18d[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Thu Sep 9 17:22:57 2021 +0530
+
+    committed
+
+[33mcommit ea7adf4615b2066d6a10b9901ff0d6b3e8540254[m
+Merge: ea3a065 ac5696c
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Thu Sep 9 16:44:53 2021 +0530
+
+    Merge branch 'master' of https://github.com/Rameshmariappan/movieapp
+
+[33mcommit ea3a065c76aaacdd6f002f30e51135e569824ff0[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Thu Sep 9 16:44:43 2021 +0530
+
+    newww
+
+[33mcommit ac5696cf53bf650a8ae9dabb23b6e51ac4f5a5dc[m
+Author: Rameshmariappan <56838939+Rameshmariappan@users.noreply.github.com>
+Date:   Thu Sep 9 16:44:06 2021 +0530
+
+    Delete .env
+
+[33mcommit 56a77664be97ea61156f0cc05443ecfe8af6e12c[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Thu Sep 9 16:39:06 2021 +0530
+
+    secondnew
+
+[33mcommit 42b8591b6931bfd4aa9091edbcf2863e3d12d105[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Thu Sep 9 16:29:39 2021 +0530
+
+    newcommit
+
+[33mcommit db3e127063a8209652293720508b0070a81c9e20[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Thu Sep 9 12:42:53 2021 +0530
+
+    fourth
+
+[33mcommit 4ce88b4530a4f59effe5fd25a9456e7be829a339[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Thu Sep 9 10:58:25 2021 +0530
+
+    new
+
+[33mcommit 9156101bf6136251b967dbd656c37951eeaba03b[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Thu Sep 9 10:39:09 2021 +0530
+
+    second
+
+[33mcommit fa2910267c970e8aab6275038f511fd0fd72f9e7[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Wed Sep 8 18:38:07 2021 +0530
+
+    first commit
+
+[33mcommit d44178ad57e77609585cfca1d3f01d4509c6bfd0[m
+Author: Ramesh Mariappan <rameshmariappan.m@gmail.com>
+Date:   Tue Sep 7 10:34:14 2021 +0530
+
+    Initialize project using Create React App

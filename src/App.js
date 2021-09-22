@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import ReactPaginate from "react-paginate";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Movie from "./component/Movie";
 import { checkMovie } from "./component/fetchFunction";
@@ -7,16 +6,11 @@ import { FEATURE_API, SEARCH_API, UPCOMING_API, NOWPLAYING_API } from "./Api";
 function App() {
   const [movies, setMovies] = useState([]);
   const [searchmovie, setSearchmovie] = useState("");
-  // const [totalpageNumber, setTotalpageNumber] = useState();
-  // const [pagenum, setPagenum] = useState(1);
   const [api, setApi] = useState(FEATURE_API);
   const [currentPage, setCurrentPage] = useState(1);
-  // const movieperpage = 20;
   useEffect(() => {
     checkMovie(FEATURE_API, currentPage).then((data) => {
-      // setPagenum(data.page - 1);
       setMovies(data.results);
-      // setTotalpageNumber(data.total_results);
     });
   }, []);
   const nextScroll = () => {
@@ -36,7 +30,6 @@ function App() {
       });
     }
   };
-  // const pageCounts = Math.ceil(totalpageNumber / movieperpage);
   return (
     <>
       <header className="headers">
@@ -101,21 +94,6 @@ function App() {
           loader={<h4>Loading...</h4>}
         />
       </div>
-      {/* <div className="paginate-control">
-        <ReactPaginate
-          previousLabel={"Previous"}
-          nextLabel={"Next"}
-          onPageChange={(e) => setCurrentPage(e.selected + 1)}
-          pageCount={pageCounts}
-          disableInitialCallback={false}
-          containerClassName={"paginationBttns"}
-          previousLinkClassName={"previousBttn"}
-          nextLinkClassName={"nextBttn"}
-          disabledClassName={"paginationDisabled"}
-          activeClassName={"paginationActive"}
-          forcePage={pagenum}
-        />
-      </div> */}
     </>
   );
 }

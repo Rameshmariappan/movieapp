@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Movie from "./component/Movie";
 import { checkMovie } from "./component/fetchFunction";
@@ -20,29 +20,54 @@ function App() {
       setMovies([...movies, ...data.results]);
     });
   };
+
+  const debounce = (func) => {
+    console.log("decall:::::::::");
+    let timer;
+    return function (...args) {
+      const context = this;
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        timer = null;
+        func.apply(context, args);
+      }, 700);
+    };
+  };
+
   const searchHandle = (e) => {
-    e.preventDefault();
-    if (searchmovie) {
+    console.log(e.target.value);
+    // setSearchmovie(e.target.value);
+    let value = e.target.value;
+    if (value) {
       setCurrentPage(1);
-      checkMovie(SEARCH_API + searchmovie + `&page=`, 1).then((data) => {
-        setApi(SEARCH_API + searchmovie + `&page=`);
+      checkMovie(SEARCH_API + value + `&page=`, 1).then((data) => {
+        setApi(SEARCH_API + value + `&page=`);
+        setSearchmovie(value);
+        setMovies(data.results);
+      });
+    } else {
+      checkMovie(FEATURE_API, currentPage).then((data) => {
         setMovies(data.results);
       });
     }
   };
+
+  const optimisedVersion = useCallback(debounce(searchHandle, [100]));
+  console.log(optimisedVersion);
   return (
     <>
       <header className="headers">
         <h2 className="mov">MovFlix</h2>
-        <form className="searchbox" onSubmit={searchHandle}>
+        <div>
+          {/* <form className="searchbox" onSubmit={searchHandle}> */}
           <input
             className="search"
             type="search"
             placeholder="Search!!!!!!"
-            onChange={(e) => setSearchmovie(e.target.value)}
-            value={searchmovie}
+            onChange={optimisedVersion}
           />
-        </form>
+          {/* </form> */}
+        </div>
       </header>
       <div className="mybutton">
         <button
